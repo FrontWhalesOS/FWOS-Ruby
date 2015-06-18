@@ -1,10 +1,10 @@
-# swapr
+# frontwhalesOS
 
-A basic file swapping service.
+A fun picture.
 
 Sign up to:
 
-* Post requests for files (songs, albums, movies, etc).
+* Post requests for photos.
 * Answer requests or view answers to existing requests.
 * Vote answers up or down.
 
