@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  get 'users/:user_id', to: 'users#show'
+
   post 'users/register', to: 'users#register'
+  get 'users/:user_id', to: 'users#show'
+
+  post 'users/login', to: 'users#login'
 
   # post 'post/'
 
