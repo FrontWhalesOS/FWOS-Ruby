@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-post 'users/register', to: 'users#register'
+
+
 
 #----------------------------------------------------------------#
 #this is PostController_Routes
@@ -19,6 +20,11 @@ delete 'posts/:id', to: 'posts#destroy'
 
 
 
+  post 'users/register', to: 'users#register'
+  get 'users/:user_id', to: 'users#show'
+  get 'users', to: 'users#index'
+
+  post 'users/login', to: 'users#login'
 
 
   # You can have the root of your site routed with "root"

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :posts
-  has_many :guesses, though: :post
+  has_many :guesses
 
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
