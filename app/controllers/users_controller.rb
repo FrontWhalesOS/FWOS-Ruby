@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       render json: { user: @user.as_json(only: [:id, :full_name, :username,
                                                 :email, :access_token]) },
         status: :created
-    elseg
+    else
       render json: { errors: @user.errors.full_messages },
         status: :unprocessable_entity
     end
