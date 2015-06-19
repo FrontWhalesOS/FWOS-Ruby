@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   post 'users/register', to: 'users#register'
   get 'users/:user_id', to: 'users#show'
+  get 'users', to: 'users#index'
 
   post 'users/login', to: 'users#login'
 
