@@ -3,14 +3,8 @@ class PostsController < ApplicationController
 
     def index #this is GET request, it will show all the posts
             @post = Post.all
-            if answer == guess_id
-                flash[:message] = 'You guessed, Congratulations'
-            else
-                flash[:alert] = "Guess again"
-            end
-
             if current_user
-                render json: {post: @post.to_json(only: [:user_id, :post_id, :title, :image_url, :gusses, :guess_id])}
+                render json: {post: @post.to_json([:id, :title, :image_url, :gusses, :guess_id])}
             else
                 render json: {post: @post.to_json(only: [:title, :image_url])}
             end
@@ -69,7 +63,7 @@ class PostsController < ApplicationController
         rendert json: @update
     end
 
-    def delete #this is DELETE request. It does not have a view file, it rederects to a different page.
+    def destroy #this is DELETE request. It does not have a view file, it rederects to a different page.
         @post = Post.find(id: params[:id])
         if user_id == current_user
             @post.destroy!
