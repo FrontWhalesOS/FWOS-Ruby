@@ -1,4 +1,22 @@
 class UsersController < ApplicationController
+
+
+  def index
+    @user = User.all
+
+    if @user.all
+      # render json "register.json.jbuilder", status: :created
+      render json: { user: @user.as_json(only: [:id, :full_name, :username,
+                                                :email, :access_token]) },
+             status: :success
+    else
+      render json: { errors: @user.errors.full_messages },
+             status: :unprocessable_entity
+    end
+  end
+
+
+
   def show
     @user = User.find(params[:user_id])
     render json: { user: @user.as_json(only: [:id, :full_name, :username,
@@ -29,8 +47,8 @@ class UsersController < ApplicationController
       # render json "register.json.jbuilder", status: :created
       render json: { user: @user.as_json(only: [:id, :full_name, :username,
                                                 :email, :access_token]) },
-             status: :created
-      elseg
+             status: :success
+      else
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
     end
