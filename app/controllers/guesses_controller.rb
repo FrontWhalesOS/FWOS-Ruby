@@ -1,8 +1,10 @@
 class GuessesController < ApplicationController
 
+  before_action :authenticate_with_token!
+
   def index
     @post = Post.find(params[:post_id])
-    @showposts = @post.guess.all #showing all the guesses of a post
+    @showposts = @post.guesses.all #showing all the guesses of a post
     #how do I do this
     #I have no idea what i am doing
     if @showposts
@@ -22,7 +24,7 @@ class GuessesController < ApplicationController
 
 
 
-def guess
+def guesses
   @guess = Guess.find(params[:guess)
 end
 
