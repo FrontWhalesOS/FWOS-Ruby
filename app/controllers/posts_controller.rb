@@ -3,15 +3,6 @@ class PostsController < ApplicationController
 
     def index #this is GET request, it will show all the posts
             @post = Post.all
-<<<<<<< Updated upstream
-=======
-            if answer == guess_id
-                flash[:message] = 'You guessed, Congratulations'
-            else
-                flash[:alert] = "Guess again"
-            end
-
->>>>>>> Stashed changes
             if current_user
                 render json: {post: @post.to_json([:id, :title, :image_url, :gusses, :guess_id])}
             else
