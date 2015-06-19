@@ -1,4 +1,24 @@
 class UsersController < ApplicationController
+<<<<<<< Updated upstream
+=======
+
+
+  def index
+    @user = User.all
+      render json: { user: @user.as_json(only: [:id, :full_name, :username, :email]) },
+             status: :ok
+
+  end
+
+
+
+  def show
+    @user = User.find(params[:user_id])
+    render json: { user: @user.as_json(only: [:id, :full_name, :username,
+                                              :email, :access_token]) }
+  end
+
+>>>>>>> Stashed changes
   def register
     passhash = Digest::SHA1.hexdigest(params[:password])
     @user = User.new(email: params[:email],
