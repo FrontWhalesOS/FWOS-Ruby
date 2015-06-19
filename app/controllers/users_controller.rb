@@ -16,9 +16,24 @@ class UsersController < ApplicationController
       render json: { user: @user.as_json(only: [:id, :full_name, :username,
                                                 :email, :access_token]) },
         status: :created
-    else
+    elseg
       render json: { errors: @user.errors.full_messages },
         status: :unprocessable_entity
+    end
+  end
+
+  def login
+    passhash = Digest::SHA1.hexdigest(params[:password])
+    @user = User.find(email: params[:email],
+                         password: passhash)
+    if @user.find
+      # render json "register.json.jbuilder", status: :created
+      render json: { user: @user.as_json(only: [:id, :full_name, :username,
+                                                :email, :access_token]) },
+             status: :created
+      elseg
+      render json: { errors: @user.errors.full_messages },
+             status: :unprocessable_entity
     end
   end
 end
