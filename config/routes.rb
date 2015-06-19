@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
 
+get 'post/:post_id/guesses', to: 'guesses#index' #this shows all guesses of a post
+get 'guess/:post_id/:guess_id', to: 'guesses#show' #this shows a guess id of a certain post
+post 'guess', to: 'guesses#create'
+
 
 #----------------------------------------------------------------#
 #this is PostController_Routes
@@ -25,6 +29,7 @@ delete 'posts/:id', to: 'posts#destroy'
   get 'users', to: 'users#index'
 
   post 'users/login', to: 'users#login'
+
 
 
   # You can have the root of your site routed with "root"
