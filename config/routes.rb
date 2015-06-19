@@ -2,10 +2,20 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  get 'users/:user_id', to: 'users#show'
-  post 'users/register', to: 'users#register'
 
-  # post 'post/'
+
+post 'users/register', to: 'users#register'
+get 'post/:post_id/guesses', to: 'guesses#index' #this shows all guesses of a post
+get 'guess/:post_id/:guess_id', to: 'guesses#show' #this shows a guess id of a certain post
+post 'guess', to: 'guesses#create'
+
+
+
+
+
+
+
+
 
 
   # You can have the root of your site routed with "root"
