@@ -16,16 +16,16 @@ class GuessesController < ApplicationController
                       }
 
     else
-      render json: {errors: @guess.errors.full_messages}
+      render json: {errors: @guess.errors.full_messages},
       status: :bad_request
 
-        end
+    end
 
-
+end
 
 
 def guesses
-  @guess = Guess.find(params[:guess)
+  @guess = Guess.find(params[:guess_id])
 end
 
 
@@ -42,31 +42,42 @@ end
                       }
 
     else
-      render json: {errors: @guess.errors.full_messages}
+      render json: {errors: @guess.errors.full_messages},
        status: :bad_request
 
-	end
+	  end
+
+  end
 
 	def create
     @post = Post.find(params[:post_id])
 
-    score = @post.answer == params[:guess] ? 1 : 0
     if !@post.solution
       @guess = current_user.guesses.new(post_id: params[:post_id],
   											 guess: params[:guess])
-      if @guess.save
-        render json: {    user_id: @user.as_json(only: [:username, :fullname, :email]),
-                          id: @guess.id,
-				                  post_id: @guess.post_id,
-				                  guess: @guess.guess,
-                          points: score}
-          status: :created
+
+              if @post.answer == params[:guess]
+                score = 1
+              else
+                score = 0
+              end
+
       # else
       #   render json: {errros: @guess.errors.}
-      end
+
     else
-      render json:  {errors: @guess.errors.solution_found}
-          status: :completed_solution
+      render json:  {errors: @guess.errors.solution_found},
+          status: :already_created
     end
+    @guess.save
+      render json: {    user_id: @user.as_json(only: [:username, :fullname, :email]),
+                        id: @guess.id,
+                        post_id: @guess.post_id,
+                        guess: @guess.guess,
+                        points: score},
+        status: :created
   end
+
+
+
 end
