@@ -1,6 +1,5 @@
 class GuessesController < ApplicationController
 
-
   def index
     @post = Post.find(params[:post_id])
     @showposts = @post.guess.all #showing all the guesses of a post
