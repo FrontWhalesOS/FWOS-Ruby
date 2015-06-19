@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-post 'users/register', to: 'users#register'
+
+
+get 'post/:post_id/guesses', to: 'guesses#index' #this shows all guesses of a post
+get 'guess/:post_id/:guess_id', to: 'guesses#show' #this shows a guess id of a certain post
+post 'guess', to: 'guesses#create'
+
 
 #----------------------------------------------------------------#
 #this is PostController_Routes
@@ -18,6 +23,12 @@ delete 'posts/:id', to: 'posts#destroy'
 
 
 
+
+  post 'users/register', to: 'users#register'
+  get 'users/:user_id', to: 'users#show'
+  get 'users', to: 'users#index'
+
+  post 'users/login', to: 'users#login'
 
 
 

@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-<<<<<<< Updated upstream
-=======
-
 
   def index
     @user = User.all
@@ -18,7 +15,6 @@ class UsersController < ApplicationController
                                               :email, :access_token]) }
   end
 
->>>>>>> Stashed changes
   def register
     passhash = Digest::SHA1.hexdigest(params[:password])
     @user = User.new(email: params[:email],

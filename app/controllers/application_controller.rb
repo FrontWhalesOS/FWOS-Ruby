@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
     token && User.find_by(access_token: token)
   end
 
-  def authenticate_with_token!
-    unless current_user
-      render json: { message: "Access Token not found." },
-        status: :unauthenticated
-    end
+   def authenticate_with_token!
+     unless current_user
+       render json: { message: "Access Token not found." },
+         status: :unauthenticated
+     end
   end
 end
