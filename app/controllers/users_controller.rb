@@ -3,17 +3,9 @@ class UsersController < ApplicationController
 
   def index
     @user = User.all
-
-    if @user.all
-      # render json "register.json.jbuilder", status: :created
       render json: { user: @user.as_json(only: [:id, :full_name, :username, :email]) },
+             status: :ok
 
-             status: :success
-    else
-      render json: { errors: @user.errors.full_messages },
-
-             status: :unprocessable_entity
-    end
   end
 
 
