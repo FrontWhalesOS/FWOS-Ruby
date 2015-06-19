@@ -20,7 +20,8 @@ Sign up to:
 * Response:
   * Status Code: 201 if successful, 422 if unsuccessful
   * Example success:
-    ```
+  
+  ```
 {
   "user": {
     "id": 2,
@@ -28,8 +29,10 @@ Sign up to:
     "access_token": "c25ddd49a8b0bc1cb8ba84727538e376"
   }
 }
-    ```
+  ```
+  
   * Example failure:
+  
   ```
 {
   "errors": [
@@ -37,3 +40,7 @@ Sign up to:
   ]
 }
   ```
+  
+### View a current User
+
+* Path: `GET '/users/:user_id``
