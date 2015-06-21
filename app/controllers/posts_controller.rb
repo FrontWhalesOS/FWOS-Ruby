@@ -1,13 +1,8 @@
 class PostsController < ApplicationController
-    before_action :authenticate_with_token!, only: [:create, :update, :delete, :show, :new]
-
+    before_action :authenticate_with_token!
     def index #this is GET request, it will show all the posts
-            @post = Post.all.order(posted_at: :desc)
-            if current_user
+            @post = Post.order(posted_at: :desc)
                 render json: {post: @post.as_json}
-            else
-                render json: {post: @post.as_json(only: [:id, :title, :image_url, :posted_at])}
-            end
     end
 
     def create #this is POST request. It does not have a view, is just going to save the post in the data base, and it will rederect to a different page
@@ -19,10 +14,8 @@ class PostsController < ApplicationController
     end
 
     def show #this is a GET Request, it will show and individual post
-        if current_user
             @post = Post.find(username: params[:username], id: params[:id])
             render json: { post: @post.as_json(only: [:post_id, :username, :title, :image_url])}
-        end
     end
 
     def new #this is GET Request, it will display the form to summit a new post
