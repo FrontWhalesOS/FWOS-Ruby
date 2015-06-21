@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :authenticate_with_token!, only: [:create, :update, :delete, :show, :new]
+    before_action :authenticate_with_token!, only: [:create, :update, :delete, :show, :new, :update, :delete]
 
     def index #this is GET request, it will show all the posts
             @post = Post.order(posted_at: :desc)
