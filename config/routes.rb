@@ -12,11 +12,11 @@ post 'guess', to: 'guesses#create'
 #this is PostController_Routes
 get 'posts', to: 'posts#index'
 post 'posts', to: 'posts#create'
-get 'posts/:id', to: 'posts#show'
+get 'posts/:username/:id', to: 'posts#show'
 get 'posts/new', to: 'posts#new'
 get 'posts/:id/edit', to: 'posts#edit', as: 'edit_form'
 patch 'posts/:id', to: 'posts#update'
-delete 'posts/:id', to: 'posts#destroy'
+delete 'posts/:id', to: 'posts#delete'
 #-----------------------------------------------------------------#
 
 
