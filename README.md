@@ -1,5 +1,7 @@
 #frontwhalesOS's project
 
+#FwOS
+
 ##CONTENT OF THIS FILE
 
 *Introduction
@@ -17,6 +19,10 @@ This is a group project Rails Engineers are currently developing along with Fron
 Guess-the-Image Web-Application where users are welcome to play; guess the image and have fun! This application is very easy to adapt.
 Every time you guess an image correctly, you will earn points. In the contrary, points will be deducted every time you guessed incorrectly.
 Visit our App to sharpened your guessing skills while having a splendid time.
+
+##Website URL
+
+https://morning-sands-1943.herokuapp.com/
 
 ##API's
 
@@ -243,3 +249,32 @@ Response:
 }```
 
 
+#Contributors to FwOS
+
+##Front End
+
+* Joseph W Joyave
+  * https://github.com/jjoyave1
+  
+* Nick Leach
+  * https://github.com/nickleach
+   
+* Christian Bustamante
+  * https://github.com/chrisbusta
+  
+##Mobile
+
+* Reed Carson
+ * https://github.com/rpcarson
+ 
+##Back End
+
+* Juan Ordaz
+  * https://github.com/juanr2001
+  
+* Tyler Day
+  * https://github.com/TK2Day
+  
+* Tucker Watts
+  * https://github.com/TuckerWatts
+  
