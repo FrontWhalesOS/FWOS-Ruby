@@ -1,5 +1,7 @@
 #frontwhalesOS's project
 
+#FwOS
+
 ##CONTENT OF THIS FILE
 
 *Introduction
@@ -18,6 +20,10 @@ Guess-the-Image Web-Application where users are welcome to play; guess the image
 Every time you guess an image correctly, you will earn points. In the contrary, points will be deducted every time you guessed incorrectly.
 Visit our App to sharpened your guessing skills while having a splendid time.
 
+##Website URL
+
+https://morning-sands-1943.herokuapp.com/
+
 ##API's
 
 ###Sign up to:
@@ -27,10 +33,12 @@ Visit our App to sharpened your guessing skills while having a splendid time.
 
 ### User
 
-### Sign Up
+### Sign Up / Register
 
 * Path: `POST '/users/register'`
 * Params:
+  * username: a string
+  * Full name: a string
   * email: a string
   * password: a string
 
@@ -57,20 +65,53 @@ Visit our App to sharpened your guessing skills while having a splendid time.
   ]
 }
   ```
+  
+### Login
 
-### View a current User
+* Path: `POST '/users/login'`
+* Params: 
+  * username: a string
+  * password: a string
+  
+```
+{"user":{"id":4,"username":"tucker","full_name":null,"email":"tucker0@tucker.com","access_token":"dbe2e11d187ddc0a13476c8df6716cbe"}}
+```
 
-* Path: `GET '/users/:user_id``
+* A new access token will be created for each session
+
+### View a single User
+
+* Path: `GET '/users/:user_id'`
+
+```
+{"user":{"id":2,"username":null,"full_name":null,"email":"Blah@blah.com","access_token":"75293a1701b8e748a673865f45e835f4"}}
+```
+
+### View all Users
+
+* Path: `GET '/users'`
+
+```
+{"user":[
+         {"id":1,"username":null,"full_name":null,"email":"tucker@tucker.com"},
+         {"id":2,"username":null,"full_name":null,"email":"Blah@blah.com"},
+         {"id":3,"username":null,"full_name":null,"email":"tucker1@tucker.com"},
+         {"id":4,"username":null,"full_name":null,"email":"tucker2@tucker.com"},
+         {"id":5,"username":null,"full_name":null,"email":"tucker3@tucker.com"},
+         {"id":6,"username":null,"full_name":null,"email":"tucker4@tucker.com"},
+         {"id":7,"username":null,"full_name":null,"email":"nick@test.com"},
+         {"id":8,"username":null,"full_name":null,"email":"nick@tes1t.com"},
+```
 
 ##Posts
 
 ###Request all posts:
 
-Path: `GET `/posts`
-Params: none
-If authanticated
-Status: 200 Ok
-Response:
+* Path: `GET '/posts'`
+* Params: none
+* If authanticated
+* Status: 200 Ok
+* Response:
 ```
  {
     "id": 1,
@@ -86,9 +127,10 @@ Response:
   },
   ```
 
-If unauthenticated.
-Status: 200 OK
-Response:
+* If unauthenticated.
+* Status: 200 OK
+* Response:
+
 ```
 {
   "post": [
@@ -103,12 +145,14 @@ Response:
 ```
 
 ###Create a Post
-Path: `POST `/posts`
-Params: none
 
-You must be authanticated before creating a post.
-Status: 201 Created
-Response:
+* Path: `POST '/posts'`
+* Params: none
+
+* You must be authanticated before creating a post.
+* Status: 201 Created
+* Response:
+
 ```{
   "post": {
     "id": 24,
@@ -124,16 +168,19 @@ Response:
   }
 }```
 
-If authanticated.
-Status: 500 Internal Server Error
-Error Message:
+* If authanticated.
+* Status: 500 Internal Server Error
+* Error Message:
+
 ```{"message":"Access Token not found."}```
 
 ###Show a Post
-Path: `GET `/posts/:username/:id'
-Params: username and id
-Must be authanticated to see a particular post
-Response:
+
+* Path: `GET '/posts/:username/:id'`
+* Params: username and id
+* Must be authanticated to see a particular post
+* Response:
+
 ```{
   "post": {
     "id": 24,
@@ -149,17 +196,20 @@ Response:
   }
 }```
 
-If unauthenticated.
-Status: 500 Internal Server Error
-Error:
+* If unauthenticated.
+* Status: 500 Internal Server Error
+* Error:
+
 ```{"message":"Access Token not found."}```
 
 ###New Post
-Path: `GET `/posts/new'
-Params:none
-Must be authanticated to create a post
-Status: 200 OK
-Response:
+
+* Path: `GET '/posts/new'`
+* Params:none
+* Must be authanticated to create a post
+* Status: 200 OK
+* Response:
+
 ```{
   "post": {
     "image_url": null,
@@ -168,18 +218,23 @@ Response:
   }
 }```
 
-If not authanticated,
-Status: 500 Internal Server Error.
-Response:
+* If not authanticated,
+* Status: 500 Internal Server Error.
+* Response:
+
+```
 {
   "message": "Access Token not found."
 }
+```
 
 ###Edit a Post
-Path: `GET `/posts/:id/edit
-Params: id
-Must be authanticated to edit a post
-Response:
+
+* Path: `GET '/posts/:id/edit'`
+* Params: id
+* Must be authanticated to edit a post
+* Response:
+
 ```{
   "post": [
     {
@@ -191,17 +246,22 @@ Response:
   ]
 }```
 
-If not authanticated,
-Status: 500 Internal Server Error.
-Response:
+* If not authanticated,
+* Status: 500 Internal Server Error.
+* Response:
+
+```
 {
   "message": "Access Token not found."
 }
+```
 
 ###Update a Post
-Path: `PATCH `/posts/:id
-Params: id
-Must be authanticated to update a post.
+
+* Path: `PATCH '/posts/:id'`
+* Params: id
+* Must be authanticated to update a post.
+
 ```{
   "post": [
     {
@@ -213,17 +273,22 @@ Must be authanticated to update a post.
   ]
 }```
 
-If not authanticated
-Status: 500 Internal Server Error
-Response:
+* If not authanticated
+* Status: 500 Internal Server Error
+* Response:
+
+```
 {
   "message": "Access Token not found."
 }
+```
 
 ###Delete a Post
-Path `DELETE `/posts/:id
-Params: id
-Must be authanticated to delete a post
+
+* Path `DELETE '/posts/:id'`
+* Params: id
+* Must be authanticated to delete a post
+
 ```{
   "post": [
     {
@@ -235,11 +300,41 @@ Must be authanticated to delete a post
   ]
 }```
 
-If not authanticated
-Status: 500 Internal Error Server
-Response:
+* If not authanticated
+* Status: 500 Internal Error Server
+* Response:
+
 ```{
   "message": "Access Token not found."
 }```
 
 
+#Contributors to FwOS
+
+##Front End
+
+  * Joseph W Joyave
+    * https://github.com/jjoyave1
+  
+  * Nick Leach
+    * https://github.com/nickleach
+   
+  * Christian Bustamante
+    * https://github.com/chrisbusta
+  
+##Mobile
+
+  * Reed Carson
+    * https://github.com/rpcarson
+ 
+##Back End
+
+  * Juan Ordaz
+    * https://github.com/juanr2001
+  
+  * Tyler Day
+    * https://github.com/TK2Day
+  
+  * Tucker Watts
+    * https://github.com/TuckerWatts
+  
