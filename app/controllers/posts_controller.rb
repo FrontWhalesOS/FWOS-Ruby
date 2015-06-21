@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     #before_action :authenticate_with_token!, only: [:create, :update, :delete, :new, :update, :delete]
 
     def index #this is GET request, it will show all the posts
-            @post = Post.order(posted_at: :desc)
+            @post = Post.all
             # if current_user
                 render json: {post: @post.as_json}
             # else
