@@ -15,12 +15,19 @@ class GuessTest < ActiveSupport::TestCase
 
 
 
+
+
+
+
     test "Must have post_id" do
         guess3 = Guess.new(guess: "Cat", user_id: 1)
         guess4 = Guess.new(guess: "Dog", user_id: 1, post_id: 3)
         refute guess3.save, "unable to save without a post_id"
         assert guess4.save
     end
+
+
+
 
 
 end
