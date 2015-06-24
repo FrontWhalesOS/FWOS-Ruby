@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps null: false
 
-      validates
+
     end
   end
 end
