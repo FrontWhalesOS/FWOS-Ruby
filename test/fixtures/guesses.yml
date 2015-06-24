@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+guess_one:
   user_id: 1
   post_id: 1
-  guess: MyString
+  guess: Cat
   points: 1
 
-two:
-  user_id: 1
+guess_two:
+  user_id: nil
   post_id: 1
-  guess: MyString
+  guess: Dog
   points: 1
