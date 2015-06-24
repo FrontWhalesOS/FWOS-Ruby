@@ -9,6 +9,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :guesses
 
       t.timestamps null: false
+
+      validates
     end
   end
 end

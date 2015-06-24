@@ -1,0 +1,11 @@
+
+
+one:
+  email: tucker@test.com
+  password: butter
+  access_token: pie
+
+two:
+  email: Wat@kek.com
+  password: hummus
+  access_token: cake
