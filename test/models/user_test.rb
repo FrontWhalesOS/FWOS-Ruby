@@ -28,4 +28,3 @@ class UserTest < ActiveSupport::TestCase
   end
 end
 
-# What is the difference between 'assert_not' and 'refute'
